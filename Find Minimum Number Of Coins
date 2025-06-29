@@ -1,0 +1,22 @@
+import java.util.*;
+public class Solution {
+    public static List<Integer> MinimumCoins(int n) {
+        int denomination[] = {1000,500,100,50,20,10,5,2,1};
+        List<Integer> ans = new ArrayList<>();
+        for(int coin : denomination){
+            while(n >= coin){
+                n -= coin;
+                ans.add(coin);
+            }
+        }
+        return ans;
+    }
+}
+
+Given an infinite supply of Indian currency i.e. [1, 2, 5, 10, 20, 50, 100, 500, 1000] valued coins and an amount 'N'.
+Find the minimum coins needed to make the sum equal to 'N'. You have to return the list containing the value of coins required in decreasing order.
+For Example
+For Amount = 70, the minimum number of coins required is 2 i.e an Rs. 50 coin and a Rs. 20 coin.
+
+T.C => O(A*N)
+S.C => O(A);
