@@ -1,0 +1,43 @@
+import java.util.* ;
+import java.io.*; 
+class Solution {
+	public static int avoidTraps(ArrayList<Integer> obstacles, int n) {
+
+		int minJump = 0;
+		int maxno = 0;
+		for(int num : obstacles){
+			maxno = Math.max(maxno,num);
+		}
+
+		for(int step = 2; step <= maxno+1;step++){
+            
+			boolean valid = true;
+
+			for(int j = 0; j < n;j++){
+				if(obstacles.get(j) % step == 0){
+					valid = false;
+					break;
+				}
+			}
+
+			if(valid) return step;
+
+		}
+				return maxno + 1;
+
+	}
+}
+
+
+Given an array of 'N' elements 'OBSTACLES', where each element represents the coordinate of the obstacle on a straight line. We start jumping from point 0 and we need to reach the end of the line avoiding
+all the obstacles which are present on the line. The length of every jump should be the same. For example, if we jump from 0 to 3, the jump is of 3 units hence the next jump should also be of 3 units that 
+is from 3 to 6 and so on.Find the minimum length of the jump so that we can reach the end of the line avoiding all obstacles.
+
+Note:
+1.The end will be a minimum possible coordinate, greater than the maximum element in the given array of elements.
+2.Avoiding obstacles means that we cannot stop at the given coordinates.
+3.The elements may not be in sorted order.
+4.The last jump can be of any unit, provided it crosses the endpoint.
+
+T.C => O(n * Obs)
+T.C => O(1)
